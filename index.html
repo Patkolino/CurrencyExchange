@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/form.css" rel="stylesheet">
+    <link href="css/body.css" rel="stylesheet">
+    <script defer src="js/script.js"></script>
+    <title>Currency exchange calculator</title>
+</head>
+
+<body class="body">
+    <form class="form js-form">
+        <fieldset class="form__fieldset">
+            <legend class="form__legend">Currency converter</legend>
+            <p>
+                <label class="form__label">Choose currency
+                    <select class="form__select js-currency" name="currency">
+                        <option title="Euro" value="EUR">EUR</option>
+                        <option title="United States dollar" value="USD">USD</option>
+                        <option title="British pound sterling" value="GBP">GBP</option>
+                        <option title="Polish zloty" value="PLN">PLN</option>
+                    </select>
+                </label>
+            </p>
+            <p>
+                <label class="form__label">Insert amount
+                    <input class="form__field js-amount" type="number" placeholder="Insert amount" required min="1" step="1" name="amount" title="Insert amount you want to convert">
+                </label>
+            </p>
+            <p>
+                <span class="form__span">Select currency to which you want to convert</span>
+                <input class="form__radio" type="radio" id="form__radio1" name="desiredCurrency" value="EUR" required title="Euro">
+                <label for="form__radio1" title="Euro">EUR</label>
+                <input class="form__radio" type="radio" id="form__radio2" name="desiredCurrency" value="USD" title="United States dollar">
+                <label for="form__radio2" title="United States dollar">USD</label>
+                <input class="form__radio" type="radio" id="form__radio3" name="desiredCurrency" value="GBP" title="British pound sterling">
+                <label for="form__radio3" title="British pound sterling">GBP</label>
+                <input class="form__radio" type="radio" id="form__radio4" name="desiredCurrency" value="PLN" title="Polish zloty">
+                <label for="form__radio4" title="Polish zloty">PLN</label>
+            </p>
+
+            <button class="form__button form__button--convert">Convert</button>
+            <button class="form__button form__button--clear js-resetButton" type="reset">Clear fields</button>
+
+            <p class="form__paragraph form__paragraph--hidden" id="js-paragraph">For <strong class="js-requestedAmount"></strong> you will receive <strong class="js-convertedAmount"></strong></p>
+
+        </fieldset>
+    </form>
+</body>
+
+</html>
