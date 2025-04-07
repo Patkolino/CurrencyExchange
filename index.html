@@ -48,11 +48,12 @@
                 <label for="form__radio4" title="Polish zloty">PLN</label>
             </p>
 
-            <button class="form__button form__button--convert">Convert</button>
-            <button class="form__button form__button--clear js-resetButton" type="reset">Clear fields</button>
+            <div class="form__container">
+                <button class="form__button form__button--convert">Convert</button>
+                <button class="form__button form__button--clear js-resetButton" type="reset">Clear fields</button>
+            </div>
 
             <p class="form__paragraph form__paragraph--hidden" id="js-paragraph">For <strong class="js-requestedAmount"></strong> you will receive <strong class="js-convertedAmount"></strong></p>
-
         </fieldset>
     </form>
 </body>

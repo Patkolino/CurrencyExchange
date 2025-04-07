@@ -1,7 +1,6 @@
 .form {
-    max-width: 400px;
     margin: 0 auto;
-    background-color: rgb(113, 182, 182);
+    background-color: rgb(118, 221, 221);
     border-radius: 25px;
     box-shadow: 0px 0px 10px 5px #272793;
     overflow-x: auto;
@@ -29,10 +28,16 @@
 
 .form__paragraph {
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .form__paragraph--hidden {
     visibility: hidden;
+}
+
+.form__container {
+    display: flex;
+    justify-content:space-between;
 }
 
 .form__button {
@@ -40,7 +45,8 @@
     padding: 5px 10px;
     letter-spacing: 1.5px;
     border-style: double;
-    margin-bottom: 5px;
+    width: 100%;
+    margin: 0 5px;
 }
 
 .form__field {
