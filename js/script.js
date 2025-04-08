@@ -1,7 +1,7 @@
 {
     const paragraphResult = document.getElementById("js-paragraph");
 
-    const fromEur = (amount) => {
+    const calculateFromEuro = (amount) => {
         switch (true) {
             case (document.getElementById("form__radio1").checked): return chooseDifferentCurrencyMessage();
             case (document.getElementById("form__radio2").checked): return amount * 1.082;
@@ -10,7 +10,7 @@
         };
     };
 
-    const fromUsd = (amount) => {
+    const calculateFromUsd = (amount) => {
         switch (true) {
             case (document.getElementById("form__radio1").checked): return amount * 0.924;
             case (document.getElementById("form__radio2").checked): return chooseDifferentCurrencyMessage();
@@ -19,7 +19,7 @@
         };
     };
 
-    const fromGbp = (amount) => {
+    const calculateFromGbp = (amount) => {
         switch (true) {
             case (document.getElementById("form__radio1").checked): return amount * 1.195;
             case (document.getElementById("form__radio2").checked): return amount * 1.293;
@@ -28,7 +28,7 @@
         };
     };
 
-    const fromPln = (amount) => {
+    const calculateFromPln = (amount) => {
         switch (true) {
             case (document.getElementById("form__radio1").checked): return amount * 0.238;
             case (document.getElementById("form__radio2").checked): return amount * 0.258;
@@ -39,10 +39,10 @@
 
     const calculateResult = (amount, currency) => {
         switch (true) {
-            case (currency === "EUR"): return fromEur(amount);
-            case (currency === "USD"): return fromUsd(amount);
-            case (currency === "GBP"): return fromGbp(amount);
-            case (currency === "PLN"): return fromPln(amount);
+            case (currency === "EUR"): return calculateFromEuro(amount);
+            case (currency === "USD"): return calculateFromUsd(amount);
+            case (currency === "GBP"): return calculateFromGbp(amount);
+            case (currency === "PLN"): return calculateFromPln(amount);
         };
     };
 
