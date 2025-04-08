@@ -69,7 +69,7 @@
         const currencyElement = document.querySelector(".js-currency");
         const amount = +amountElement.value;
         const currency = currencyElement.value;
-        const desiredCurrency = document.querySelector('input[name="desiredCurrency"]:checked').value;        
+        const desiredCurrency = document.querySelector('input[name="desiredCurrency"]:checked').value;
         const result = calculateResult(amount, currency);
         updateResult(currency, amount, result, desiredCurrency);
     };
@@ -82,5 +82,4 @@
     };
 
     init();
-
 }

@@ -1,7 +1,7 @@
 # Currency converter
 
 ## Description
-This is a simple web application that allows user to convert currencies 
+This is a simple web application that allows user to convert from one to currency to another
 
 ## Features
 - Possibility to convert multiple currencies (EUR, USD, GBP, PLN) - exchange rates are fixed as they are not fetched real-time 
@@ -23,7 +23,8 @@ This is a simple web application that allows user to convert currencies
 - Webpage was built using **HTML**, **CSS** and **JavaScript**
 - Normalize CSS included (https://cdnjs.com/libraries/normalize) 
 - Code written according to BEM standards
-- Background image and page icon were added
+- Flexbox layour model used
+- Background image and page icon are added
 - All the required fields are marked with * - app prevents conversion in case of empty fields or incorrect value
 - Error message included in case conversion **from** and **to** same currency is attempted
 
