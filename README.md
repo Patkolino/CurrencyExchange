@@ -8,7 +8,7 @@ This is a simple web application that allows user to convert from one to currenc
 - User-friendly interface
 
 ## Live demo
-[View live demo](patkolino.github.io/CurrencyExchange/)
+[View live demo](https://patkolino.github.io/CurrencyExchange/)
 
 ## Usage
 1. From the drop-down menu choose the currency from which you wish to convert <div>!["From" currency drop down menu](images/fromcurrency.png)</div>
