@@ -1,44 +1,86 @@
-const formElement = document.querySelector(".js-form");
-const amountElement = document.querySelector(".js-amount");
-const currencyElement = document.querySelector(".js-currency");
-const convertedElement = document.querySelector(".js-convertedAmount");
-const resetButton = document.querySelector(".js-resetButton");
-const requestedElement = document.querySelector(".js-requestedAmount");
-let paragraphResult = document.getElementById("js-paragraph");
+{
+    const paragraphResult = document.getElementById("js-paragraph");
 
-formElement.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const amount = amountElement.value;
-    const currency = currencyElement.value;
-    let result;
-    let desiredCurrency = document.querySelector('input[name="desiredCurrency"]:checked').value;
-    switch (true) {
-        case ((currency === "EUR") && ((document.getElementById("form__radio1").checked))): alert("Please choose a different currency"); break;
-        case ((currency === "EUR") && ((document.getElementById("form__radio2").checked))): result = amount * 1.082; break;
-        case ((currency === "EUR") && ((document.getElementById("form__radio3").checked))): result = amount * 0.836; break;
-        case ((currency === "EUR") && ((document.getElementById("form__radio4").checked))): result = amount * 4.185; break;
-
-        case ((currency === "USD") && ((document.getElementById("form__radio1").checked))): result = amount * 0.924; break;
-        case ((currency === "USD") && ((document.getElementById("form__radio2").checked))): alert("Please choose a different currency"); break;
-        case ((currency === "USD") && ((document.getElementById("form__radio3").checked))): result = amount * 0.772; break;
-        case ((currency === "USD") && ((document.getElementById("form__radio4").checked))): result = amount * 3.863; break;
-
-        case ((currency === "GBP") && ((document.getElementById("form__radio1").checked))): result = amount * 1.195; break;
-        case ((currency === "GBP") && ((document.getElementById("form__radio2").checked))): result = amount * 1.293; break;
-        case ((currency === "GBP") && ((document.getElementById("form__radio3").checked))): alert("Please choose a different currency"); break;
-        case ((currency === "GBP") && ((document.getElementById("form__radio4").checked))): result = amount * 5.004; break;
-
-        case ((currency === "PLN") && ((document.getElementById("form__radio1").checked))): result = amount * 0.238; break;
-        case ((currency === "PLN") && ((document.getElementById("form__radio2").checked))): result = amount * 0.258; break;
-        case ((currency === "PLN") && ((document.getElementById("form__radio3").checked))): result = amount * 0.199; break;
-        case ((currency === "PLN") && ((document.getElementById("form__radio4").checked))): alert("Please choose a different currency"); break;
+    const fromEur = (amount) => {
+        switch (true) {
+            case (document.getElementById("form__radio1").checked): return chooseDifferentCurrencyMessage();
+            case (document.getElementById("form__radio2").checked): return amount * 1.082;
+            case (document.getElementById("form__radio3").checked): return amount * 0.836;
+            case (document.getElementById("form__radio4").checked): return amount * 4.185;
+        };
     };
-    requestedElement.innerText = `${amount} ${currency}`;
-    convertedElement.innerText = `${result.toFixed(2)} ${desiredCurrency}`;
-    paragraphResult.style.visibility = "visible";
-});
 
-resetButton.addEventListener("click", () => {
-    convertedElement.innerText = "";
-    paragraphResult.style.visibility = "hidden";
-});
+    const fromUsd = (amount) => {
+        switch (true) {
+            case (document.getElementById("form__radio1").checked): return amount * 0.924;
+            case (document.getElementById("form__radio2").checked): return chooseDifferentCurrencyMessage();
+            case (document.getElementById("form__radio3").checked): return amount * 0.772;
+            case (document.getElementById("form__radio4").checked): return amount * 3.863;
+        };
+    };
+
+    const fromGbp = (amount) => {
+        switch (true) {
+            case (document.getElementById("form__radio1").checked): return amount * 1.195;
+            case (document.getElementById("form__radio2").checked): return amount * 1.293;
+            case (document.getElementById("form__radio3").checked): return chooseDifferentCurrencyMessage();
+            case (document.getElementById("form__radio4").checked): return amount * 5.004;
+        };
+    };
+
+    const fromPln = (amount) => {
+        switch (true) {
+            case (document.getElementById("form__radio1").checked): return amount * 0.238;
+            case (document.getElementById("form__radio2").checked): return amount * 0.258;
+            case (document.getElementById("form__radio3").checked): return amount * 0.199;
+            case (document.getElementById("form__radio4").checked): return chooseDifferentCurrencyMessage();
+        };
+    };
+
+    const calculateResult = (amount, currency) => {
+        switch (true) {
+            case (currency === "EUR"): return fromEur(amount);
+            case (currency === "USD"): return fromUsd(amount);
+            case (currency === "GBP"): return fromGbp(amount);
+            case (currency === "PLN"): return fromPln(amount);
+        };
+    };
+
+    const updateResult = (currency, amount, result, desiredCurrency) => {
+        const convertedElement = document.querySelector(".js-convertedAmount");
+        const requestedElement = document.querySelector(".js-requestedAmount");
+        requestedElement.innerHTML = `${amount} ${currency}`;
+        convertedElement.innerHTML = `${result.toFixed(2)} ${desiredCurrency}`;
+        paragraphResult.style.visibility = "visible";
+    };
+
+    const onResetFormClick = () => {
+        paragraphResult.style.visibility = "hidden";
+    };
+
+    const chooseDifferentCurrencyMessage = () => {
+        paragraphResult.style.visibility = "hidden";
+        alert("Please choose a different currency");
+    };
+
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+        const amountElement = document.querySelector(".js-amount");
+        const currencyElement = document.querySelector(".js-currency");
+        const amount = +amountElement.value;
+        const currency = currencyElement.value;
+        const desiredCurrency = document.querySelector('input[name="desiredCurrency"]:checked').value;        
+        const result = calculateResult(amount, currency);
+        updateResult(currency, amount, result, desiredCurrency);
+    };
+
+    const init = () => {
+        const resetButton = document.querySelector(".js-resetButton");
+        const formElement = document.querySelector(".js-form");
+        formElement.addEventListener("submit", onFormSubmit);
+        resetButton.addEventListener("click", onResetFormClick);
+    };
+
+    init();
+
+}

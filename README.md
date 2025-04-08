@@ -1,7 +1,7 @@
 # Currency converter
 
 ## Description
-This is a simple web application that allows user to convert currencies from one type to another
+This is a simple web application that allows user to convert currencies 
 
 ## Features
 - Possibility to convert multiple currencies (EUR, USD, GBP, PLN) - exchange rates are fixed as they are not fetched real-time 
